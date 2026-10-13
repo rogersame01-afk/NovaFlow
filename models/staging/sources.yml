@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: novaflow_raw
+    description: raw data source for the novaflow platforms.
+    database: NOVAFLOW
+    schema: NOVAFLOW_RAW
+    tables:
+      - name: accounts
+      - name: contacts
+      - name: leads
+      - name: opportunities
+      - name: opportunity_history
+      - name: sales_reps
+      - name: campaigns
+      - name: marketing_touches
+      - name: activities
+      - name: invoices
+      - name: support_tickets
+      - name: website_events

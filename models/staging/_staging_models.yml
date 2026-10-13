@@ -1,0 +1,32 @@
+version: 2
+
+models:
+
+  - name: stg_accounts
+    description: >
+      Cleaned and standardized CRM account records.
+
+    columns:
+
+      - name: account_id
+        description: Unique identifier for each account.
+
+        data_tests:
+          - not_null
+
+      - name: segment
+        description: Customer business segment.
+
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - SMB
+                  - Mid-Market
+                  - Enterprise
+                  - Unknown
+
+      - name: region
+        description: Standardized geographic region.
+
+      

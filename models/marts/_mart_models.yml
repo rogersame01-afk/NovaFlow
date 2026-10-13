@@ -1,0 +1,50 @@
+
+version: 2
+
+models:
+  - name: dim_accounts
+    description: "Account dimension table with SCD Type 2 history."
+
+    columns:
+      - name: account_sk
+        data_tests:
+          - unique
+          - not_null
+
+      - name: account_id
+        data_tests:
+          - not_null
+
+  - name: fct_opportunities
+    description: >
+      Opportunity-level fact table.
+      Grain is one row per opportunity.
+
+    columns:
+      - name: opportunity_id
+        description: "Unique identifier for each opportunity."
+        data_tests:
+          - unique
+          - not_null
+
+      - name: account_sk
+        description: "SCD Type 2 surrogate key for the related account version."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_accounts')
+                field: account_sk
+
+      - name: account_id
+        description: "Business account identifier."
+        data_tests:
+          - not_null
+
+      - name: opportunity_amount
+        description: "Opportunity value."
+        data_tests:
+          - not_null
+
+      - name: probability
+        description: "Opportunity probability between 0 and 1."

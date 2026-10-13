@@ -1,0 +1,1 @@
+select * from {{ source('novaflow_raw', 'leads') }}
